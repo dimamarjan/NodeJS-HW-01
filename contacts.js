@@ -7,7 +7,7 @@ const DATABASE = "contacts.json"
 const contactsPath = path.resolve(__dirname, "db", DATABASE)
 
 function listContacts() {
-    fs.readFile(contactsPath, "utf-8", async (err, data) => {
+    fs.readFile(contactsPath, "utf-8", (err, data) => {
         if (err) {
             console.log("ERROR: ", err);
         } else {
@@ -18,7 +18,7 @@ function listContacts() {
 }
 
 function getContactById(contactId) {
-    fs.readFile(contactsPath, "utf-8", async (err, data) => {
+    fs.readFile(contactsPath, "utf-8", (err, data) => {
         if (err) {
             console.log("ERROR: ", err)
         } else {
@@ -34,7 +34,7 @@ function getContactById(contactId) {
 }
 
 function removeContact(contactId) {
-    fs.readFile(contactsPath, "utf-8", async (err, data) => {
+    fs.readFile(contactsPath, "utf-8", (err, data) => {
         if (err) {
             console.log("ERROR: ", err)
         } else {
@@ -50,7 +50,7 @@ function removeContact(contactId) {
 }
 
 function addContact(name, email, phone) {
-    fs.readFile(contactsPath, "utf-8", async (err, data) => {
+    fs.readFile(contactsPath, "utf-8", (err, data) => {
         if (err) {
             console.log("ERROR: ", err)
         } else {
