@@ -48,7 +48,11 @@ function removeContact(contactId) {
         } else {
             const recvData = JSON.parse(data)
             const filteredData = recvData.filter(elem => elem.id !== parseInt(contactId))
-            contactsDataHeandler(contactsPath, filteredData)
+            if (filteredData.length) {
+                contactsDataHeandler(contactsPath, filteredData)
+            } else {
+                console.log("\nno contacts found...\n")
+            }
         }
     })
 }

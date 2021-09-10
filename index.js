@@ -1,4 +1,4 @@
-const { Command } = require('commander');
+const { Command } = require('commander')
 const {
     listContacts,
     getContactById,
@@ -11,7 +11,7 @@ program
     .option('-i, --id <type>', 'user id')
     .option('-n, --name <type>', 'user name')
     .option('-e, --email <type>', 'user email')
-    .option('-p, --phone <type>', 'user phone');
+    .option('-p, --phone <type>', 'user phone')
 
 program.parse(process.argv);
 
@@ -34,8 +34,8 @@ function invokeAction({ action, id, name, email, phone }) {
             removeContact(id)
             break;
         default:
-            console.warn('\x1B[31m Unknown action type!');
+            console.warn('\x1B[31m Unknown action type!')
     }
 }
 
-invokeAction(argv);
+invokeAction(argv)
