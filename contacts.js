@@ -1,18 +1,10 @@
 const path = require('path')
 const fs = require('fs')
 
+const contactsDBHeandler = require('./utils/contactsDBHeandler')
+
 const DATABASE = "contacts.json"
 const contactsPath = path.resolve(__dirname, "db", DATABASE)
-
-const contactsDataHeandler = (path, recivedData) => {
-    const parsedData = JSON.stringify(recivedData)
-    fs.writeFile(path, parsedData, "utf8", (err) => {
-        if (err) {
-            console.log("ERROR: ", err)
-        }
-    })
-}
-
 
 function listContacts() {
     fs.readFile(contactsPath, "utf-8", async (err, data) => {
@@ -49,7 +41,7 @@ function removeContact(contactId) {
             const recvData = JSON.parse(data)
             const filteredData = recvData.filter(elem => elem.id !== parseInt(contactId))
             if (filteredData.length) {
-                contactsDataHeandler(contactsPath, filteredData)
+                contactsDBHeandler(contactsPath, filteredData)
             } else {
                 console.log("\nno contacts found...\n")
             }
@@ -71,7 +63,7 @@ function addContact(name, email, phone) {
                 "phone": phone
             }
             const newData = [...recvData, newContact]
-            contactsDataHeandler(contactsPath, newData)
+            contactsDBHeandler(contactsPath, newData)
         }
     })
 }
